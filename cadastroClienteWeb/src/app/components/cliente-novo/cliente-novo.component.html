@@ -1,0 +1,117 @@
+<div class="col-md-10" style="margin-left:0%">
+  <div class="top-bg accent"></div>
+  <div class="center mt-30">
+    <form fxLayout="column" [formGroup]="clienteForm" (ngSubmit)="register()">
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+      <mat-expansion-panel [expanded]="true" style="margin-top: -2%">
+        <mat-expansion-panel-header [ngStyle]="{'margin-bottom': '-1%'}">
+          <mat-panel-title [ngStyle]="{'color': 'white'}">
+            Novo Cliente
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <br/>
+
+        <h2 class="mat-h3  titulo-endereco">Dados pessoais</h2>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row">
+          <mat-form-field class="col-sm-6">
+              <input matInput placeholder="Nome" maxlength="100" minlength="4" type="text" formControlName="nome">
+              <mat-error *ngIf="clienteForm.controls['nome'].invalid && clienteForm.controls['nome'].hasError('required')">
+                'Nome' obrigatório
+              </mat-error>
+              <mat-error *ngIf=" clienteForm.controls['nome'].invalid">
+                'Nome' inválido
+              </mat-error>
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="CPF" type="text" formControlName="cpf" [textMask]="{mask: mascaraCpf}">
+            <mat-error *ngIf="clienteForm.controls['cpf'].invalid || clienteForm.get('cpf').hasError('cpfErroQtd')">
+              'CPF' obrigatório / mínimo 11 dígitos
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row">
+          <mat-form-field class="col-sm-6">
+            <input matInput name="email" type="email" placeholder="E-mail" formControlName="email" required>
+            <mat-error *ngIf="email.invalid">{{ getEmailError() }}</mat-error>
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <mat-form-field fxFlex="30">
+            <input matInput placeholder="Telefone" type="text" formControlName="telefone" [textMask]="{mask: mascaraTelefone}">
+          </mat-form-field>
+        </div>
+
+        <h2 class="mat-h3  titulo-endereco">Endereço</h2>
+        <mat-divider></mat-divider>
+
+        <div formGroupName="endereco">
+          <div fxLayout="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="col-sm-3">
+              <input formControlName="cep" form matInput placeholder="Cep" mask="00000-000" (blur)="getEndereco()" [textMask]="{mask: mascaraCep}" required>
+              <mat-error *ngIf="clienteForm.get('endereco').get('cep').invalid && clienteForm.get('endereco').get('cep').hasError('required')">
+                'Cep' obrigatório
+              </mat-error>
+              <mat-error *ngIf="clienteForm.get('endereco').get('cep').hasError('cepErro')">
+                'Cep' inválido
+              </mat-error>
+            </mat-form-field>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Se você não tem certeza de qual é o CEP, o site dos <a style="color: #075fab" href="https://www.correios.com.br/" target="_blank" title="Correios">Correios</a> pode te ajudar</p>
+          </div>
+
+          <br/>
+
+          <div fxLayout="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="col-sm-3">
+              <input matInput placeholder="Logadouro" formControlName="logradouro" type="text" [readonly]="true">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field class="col-sm-3">
+              <input matInput placeholder="Número" type="number" formControlName="numero" required>
+              <mat-error>Campo é obrigatório</mat-error>
+            </mat-form-field>
+
+              &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field class="col-sm-3">
+                <input matInput placeholder="Complemento" formControlName="complemento" maxlength="50" >
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="col-sm-5">
+              <input matInput placeholder="Bairro" formControlName="bairro" type="text" [readonly]="true">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field class="col-sm-3">
+              <input matInput placeholder="UF" formControlName="uf" type="text" [readonly]="true">
+            </mat-form-field>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field class="col-sm-3">
+              <input matInput placeholder="Município" formControlName="municipio" type="text" [readonly]="true">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <br/>
+        <button style="margin-left:80%" mat-raised-button color="primary" type="submit" fxFlexOffset="5">Salvar</button>
+
+      </mat-expansion-panel>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.mat-expansion-panel-header,
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:after,
+.mat-expansion-panel-header.mat-expanded:active,
+.mat-expansion-panel-header.mat-expanded:before,
+.mat-expansion-panel-header.mat-expanded:visited,
+.mat-expansion-panel-header.mat-expanded:hover,
+
+
+.mat-expansion-panel-header-title {
+  color: white !important;
+}
+
+a.ng-star-inserted.datatable-icon-down,
+a.ng-star-inserted.datatable-icon-right {
+  color: #075fab;
+}

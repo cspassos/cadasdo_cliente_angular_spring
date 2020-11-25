@@ -1,0 +1,12 @@
+<app-header [hidden]="!showTemplate"></app-header>
+<app-menu [hidden]="!showTemplate"></app-menu>
+<div class="content-wrapper" style="min-height: 518px">
+  <section class="content-header">
+  </section>
+  <section class="content">
+      <router-outlet></router-outlet>
+  </section>
+</div>
+<div style="padding-top: 2%;">
+  <app-footer [hidden]="!showTemplate"></app-footer>
+</div>

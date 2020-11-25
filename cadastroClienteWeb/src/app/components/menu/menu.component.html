@@ -1,0 +1,33 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+
+      <li class="treeview" *ngIf="shared.usuario.profileEnum == 'ADM'">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Usuário</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/usuario-lista']"><i class="fa fa-circle-o"></i> Lista</a></li>
+          <li><a [routerLink]="['/novo-usuario']"><i class="fa fa-circle-o"></i> Novo Usuário</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview" *ngIf="shared.usuario.profileEnum == 'ADM' || shared.usuario.profileEnum != 'ADM'">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Cliente</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/cliente-lista']"><i class="fa fa-circle-o"></i> Lista</a></li>
+          <li><a [routerLink]="['/cliente-novo']"><i class="fa fa-circle-o"></i> Novo Cliente</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </section>
+</aside>
